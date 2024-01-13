@@ -1,5 +1,6 @@
 <?php
 include('./View/navbar.php');
+include('../Controller/session.php');
 ?>
 <!doctype html>
 <html lang="pt-br">

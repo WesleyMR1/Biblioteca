@@ -1,6 +1,35 @@
 <?php
 include('../View/navbar.php');
 include('../Controller/livroController.php');
+include('../Controller/session.php');
+// 
+
+if (!empty($_POST['btnEditar'])) {
+    if (!empty($_POST['id'])) {
+        if (!empty($_POST['nomeLivro']) and $_POST['nomeLivro'] != "") {
+            $idLivro = $_POST['id'];
+            $nomeLivro = $_POST['nomeLivro'];
+            alterarLivro($idLivro, $nomeLivro);
+        }
+    }
+}
+
+if (!empty($_GET['deletar'])) {
+    $id = $_GET['deletar'];
+    deletarLivro($id);
+}
+if (!empty($_POST['btnCadastrar'])) {
+    if (!empty($_POST['nomeLivro'])) {
+        $nomeLivro = $_POST['nomeLivro'];
+        criarLivro($nomeLivro);
+    }
+}
+
+
+// if (!empty($_SESSION['botao']['criarLivro']) or $_SESSION['botao']['criarLivro'] == !null) {
+//     //ativar aba
+// }
+
 
 ?>
 
@@ -11,33 +40,34 @@ include('../Controller/livroController.php');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LIVROS</title>
-    <link href="View/links/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../View/links/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="Container" style="margin-top: 5px;">
-        <div class="row">
-            <div class="col">
+    <div class="container-fluid h-100" style="margin-top: 5px;">
+        <div class="row ">
+            <div class="col" style="height: 33em">
                 <div class="links" style="display: flex; justify-content: center;">
-                    <button href='../View/livroViewCreate.php' target='iframe'
-                        style="width: 80%;  border: 3px solid #777;"> Cadastrar novo
-                        livro</button>
+                    <a href='../View/livroViewCreate.php' target='iframe' class=" btn"
+                        style="width: 80%;  border: 0.2em solid #999; border-radius: 0.2em;"> Cadastrar novo livro</a>
                 </div>
                 <br>
                 <div style="display: flex; justify-content: center;">
-                    <iframe src="../View/livroViewCreate.php" name="iframe" frameborder="1"
-                        style="background-color: #DDD; width: 80%;"></iframe>
+                    <iframe src="" name="iframe" frameborder="1"
+                        style="background-color: #CCC; width: 80%; height: 29em"></iframe>
                 </div>
             </div>
             <!--  -->
-            <div class="col" style="background-color: #AAA;">
+            <div class="col"
+                style="background-color: #AAA; border: 0.2em solid #888; margin-right: 0.3em; overflow-y: auto; max-height: 33.5em;">
 
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col" style="width: 20%; border: 1px solid black; text-align: center;">#</th>
-                            <th scope="col" style=" border: 1px solid black; text-align: center;">Nome</th>
-                            <th scope="col" style="width: 30%; border: 1px solid black; text-align: center;">
+                            <th scope="col" style="width: 20%; border-bottom: 0.1em solid #aaa; text-align: center;">#
+                            </th>
+                            <th scope="col" style=" border-bottom: 0.1em solid #aaa; text-align: center;">Nome</th>
+                            <th scope="col" style="width: 30%; border-bottom: 0.1em solid #aaa; text-align: center;">
                                 --
                             </th>
                         </tr>
@@ -51,7 +81,6 @@ include('../Controller/livroController.php');
             </div>
         </div>
     </div>
-
     <script src=" ../View/links/js/bootstrap.bundle.min.js"></script>
 </body>
 

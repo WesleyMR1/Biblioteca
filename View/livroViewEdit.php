@@ -16,7 +16,11 @@ include('../Controller/session.php');
         <form style="background-color: #ccc; border-radius: 1em;" method="POST" action="../View/livroView.php"
             target="_parent">
             <div style="padding: 1.5em;">
-                <legend>Cadastrar LIVRO:</legend>
+                <legend>Editar LIVRO:</legend>
+                <h5>ID:
+                    <?php echo $_GET['alterar']; ?>
+                </h5>
+                <input type="hidden" name="id" value="<?php echo $_GET['alterar']; ?>">
                 <div class="mb-3">
                     <label for="nomeLivro" class="form-label">Nome:</label>
                     <input type="text" class="form-control" id="nomeLivro" aria-describedby="nomeLivroHelp"
@@ -24,8 +28,8 @@ include('../Controller/session.php');
                     <div id="nomeLivroHelp" class="form-text">Nome por extenso do livro.</div>
                 </div>
                 <br>
-                <input type="submit" class="btn btn-success" style="width: 100%;" name="btnCadastrar"
-                    value="Cadastrar"></input>
+                <input type="submit" class="btn btn-success" style="width: 100%;" name="btnEditar"
+                    value="Editar"></input>
             </div>
         </form>
     </div>
