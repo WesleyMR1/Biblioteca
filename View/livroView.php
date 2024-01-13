@@ -14,8 +14,8 @@ if (!empty($_POST['btnEditar'])) {
     }
 }
 
-if (!empty($_GET['deletar'])) {
-    $id = $_GET['deletar'];
+if (!empty($_POST['btnDeletar'])) {
+    $id = $_POST['idLivro'];
     deletarLivro($id);
 }
 if (!empty($_POST['btnCadastrar'])) {

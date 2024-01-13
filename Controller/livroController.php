@@ -30,7 +30,12 @@ function tabelaLivros()
             <th scope="col" style="text-align: center;">
                 <a target="iframe" class="btn btn-primary" style="width: 40%;"
                     href="../View/livroViewEdit.php?alterar=<?php echo $res[$i]['id_livro'] ?>">Alterar</a>
-                <a class="btn btn-danger" style="width: 40%;" href="?deletar=<?php echo $res[$i]['id_livro'] ?>">Deletar</a>
+                <form action="../View/livroView.php" method="post">
+                    <input type="hidden" name="idLivro" value="<?php echo $res[$i]['id_livro'] ?>">
+                    <button name="btnDeletar" type="submit" class="btn btn-danger" style="width: 40%;"
+                        value="deletar">Deletar</button>
+                </form>
+
 
             </th>
             <?php
