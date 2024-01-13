@@ -5,12 +5,12 @@ use biblioteca
 
 create table  Clientes(
     id_cliente int not null primary key auto_increment,
-    nome varchar(140) not null
+    nome_cliente varchar(140) not null
 );
 
 create table  Livros(
     id_livro int not null primary key auto_increment,
-    nome varchar(140) not null
+    nome_livro varchar(140) not null
 );
 
 create table  Locacoes(
@@ -23,7 +23,7 @@ create table  Locacoes(
 
 
 
-insert into clientes(nome) values ("cliente1");
-insert into livros(nome) values ("livro1");
+insert into clientes(nome_cliente) values ("cliente1");
+insert into livros(nome_livro) values ("livro1");
 
 insert into locacoes(cliente, livro) values (1, 1);

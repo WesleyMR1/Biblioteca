@@ -9,14 +9,14 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand bg-dark navbar-dark">
+    <nav class="navbar navbar-expand bg-dark navbar-dark" style="border-bottom: 4px solid #CCC">
         <div class="container-fluid">
             <ul class="navbar-nav">
                 <span class="navbar-brand">
                     Biblioteca
                 </span>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Livros</a>
+                    <a href="../View/livroView.php" class="nav-link">Livros</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">Clientes</a>
