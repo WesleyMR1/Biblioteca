@@ -1,30 +1,33 @@
 <?php
 include('../View/navbar.php');
-include('../Controller/clienteController.php');
+include('../Controller/locacaoController.php');
 include('../Controller/session.php');
 include("../Controller/protect.php");
 // 
 
 if (!empty($_POST['btnEditar'])) {
     if (!empty($_POST['id'])) {
-        if (!empty($_POST['nomeCliente']) and $_POST['nomeCliente'] != "") {
-            $idCliente = $_POST['id'];
-            $nomeCliente = $_POST['nomeCliente'];
-            alterarCliente($idCliente, $nomeCliente);
+        if (!empty($_POST['nomeLivro']) and $_POST['nomeLivro'] != "") {
+            $idLivro = $_POST['id'];
+            $nomeLivro = $_POST['nomeLivro'];
+            alterarLivro($idLivro, $nomeLivro);
         }
     }
 }
 
 if (!empty($_POST['btnDeletar'])) {
-    $id = $_POST['idCliente'];
-    deletarCliente($id);
+    $id = $_POST['idLocacao'];
+    deletarLocacao($id);
 }
-if (!empty($_POST['btnCadastrar'])) {
-    if (!empty($_POST['nomeCliente'])) {
+if (!empty($_POST['btnLocacao'])) {
+    if (!empty($_POST['nomeLivro'])) {
+        $nomeLivro = $_POST['nomeLivro'];
         $nomeCliente = $_POST['nomeCliente'];
-        criarCliente($nomeCliente);
+        criarLocacao($nomeLivro, $nomeCliente);
     }
 }
+
+
 
 
 
@@ -36,7 +39,7 @@ if (!empty($_POST['btnCadastrar'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CLIENTES</title>
+    <title>LOCAÇÕES</title>
     <link href="../View/links/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -45,13 +48,22 @@ if (!empty($_POST['btnCadastrar'])) {
         <div class="row ">
             <div class="col" style="height: 33em">
                 <div class="links" style="display: flex; justify-content: center;">
-                    <a href='../View/clienteViewCreate.php' target='iframeCliente' class=" btn"
-                        style="width: 80%;  border: 0.2em solid #999; border-radius: 0.2em;"> Cadastrar novo Cliente</a>
+                    <a href='../View/locacaoViewCreate.php' target='iframeLocacao' class=" btn"
+                        style="width: 80%;  border: 0.2em solid #999; border-radius: 0.2em;"> Realizar LOCAÇÃO</a>
                 </div>
                 <br>
                 <div style="display: flex; justify-content: center;">
-                    <iframe src="" name="iframeCliente" frameborder="1"
+                    <iframe src="" name="iframeLocacao" frameborder="1"
                         style="background-color: #CCC; width: 80%; height: 29em"></iframe>
+                </div>
+                <div>
+                    <?PHP
+                    if (isset($_SESSION['msgLivroLocado'])) {
+                        echo "<div class=\" btn btn-danger\" style=\"float: left; z-index=1\">" . $_SESSION['msgLivroLocado'] . "</div>";
+                        unset($_SESSION['msgLivroLocado']);
+                    }
+                    ?>
+
                 </div>
             </div>
             <!--  -->
@@ -61,16 +73,16 @@ if (!empty($_POST['btnCadastrar'])) {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col" style="width: 20%; border-bottom: 0.1em solid #aaa; text-align: center;">#
+                            <th scope="col" style=" border-bottom: 0.1em solid #aaa; text-align: center;">Livro
                             </th>
-                            <th scope="col" style=" border-bottom: 0.1em solid #aaa; text-align: center;">Nome</th>
+                            <th scope="col" style=" border-bottom: 0.1em solid #aaa; text-align: center;">Cliente</th>
                             <th scope="col" style="width: 30%; border-bottom: 0.1em solid #aaa; text-align: center;">
                                 --
                             </th>
                         </tr>
                     </thead>
                     <?php
-                    tabelaClientes();
+                    tabelaLocacoes();
                     ?>
 
                 </table>

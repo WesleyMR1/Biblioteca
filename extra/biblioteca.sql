@@ -14,7 +14,7 @@ create table  Livros(
 );
 
 create table  Locacoes(
-    id_locacoes int not null primary key auto_increment,
+    id_locacao int not null primary key auto_increment,
     cliente int not null,
     livro int not null,
     constraint FKcliente foreign key(cliente) references Clientes(id_cliente) ON DELETE CASCADE
