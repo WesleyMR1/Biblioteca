@@ -1,0 +1,25 @@
+body{
+    background-image: url(../../extra/livros.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.formulario{
+    background: rgba(0,0,0,.5);
+    padding: 3em;
+    border-radius: 0.5em;
+    color: white;
+    box-shadow: 0 0 40px rgba(0,0,0, 0.800);
+}
+.botao-login{
+    background-color: #505050;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 700!important;
+    color: white;
+}
+#botaoCadastrar{
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(71, 71, 71);
+}

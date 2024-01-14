@@ -1,3 +1,8 @@
+<?php
+
+include("../Controller/protect.php");
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -25,6 +30,7 @@
                     <a href="#" class="nav-link">Locação</a>
                 </li>
             </ul>
+            <a href="../Controller/logout.php" class="btn btn-danger" style="float: right;">Sair</a>
         </div>
     </nav>
 

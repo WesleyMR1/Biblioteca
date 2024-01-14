@@ -1,32 +1,30 @@
 <?php
 include('../View/navbar.php');
-include('../Controller/livroController.php');
+include('../Controller/clienteController.php');
 include('../Controller/session.php');
 include("../Controller/protect.php");
 // 
 
 if (!empty($_POST['btnEditar'])) {
     if (!empty($_POST['id'])) {
-        if (!empty($_POST['nomeLivro']) and $_POST['nomeLivro'] != "") {
-            $idLivro = $_POST['id'];
-            $nomeLivro = $_POST['nomeLivro'];
-            alterarLivro($idLivro, $nomeLivro);
+        if (!empty($_POST['nomeCliente']) and $_POST['nomeCliente'] != "") {
+            $idCliente = $_POST['id'];
+            $nomeCliente = $_POST['nomeCliente'];
+            alterarLivro($idCliente, $nomeCliente);
         }
     }
 }
 
 if (!empty($_POST['btnDeletar'])) {
-    $id = $_POST['idLivro'];
-    deletarLivro($id);
+    $id = $_POST['idCliente'];
+    deletarCliente($id);
 }
 if (!empty($_POST['btnCadastrar'])) {
-    if (!empty($_POST['nomeLivro'])) {
-        $nomeLivro = $_POST['nomeLivro'];
-        criarLivro($nomeLivro);
+    if (!empty($_POST['nomeCliente'])) {
+        $nomeCliente = $_POST['nomeCliente'];
+        criarLivro($nomeCliente);
     }
 }
-
-
 
 
 

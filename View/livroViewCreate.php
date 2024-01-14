@@ -1,5 +1,6 @@
 <?php
 include('../Controller/session.php');
+include("../Controller/protect.php");
 ?>
 <!doctype html>
 <html lang="pt-br">

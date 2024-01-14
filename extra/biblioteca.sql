@@ -17,13 +17,23 @@ create table  Locacoes(
     id_locacoes int not null primary key auto_increment,
     cliente int not null,
     livro int not null,
-    constraint FKcliente foreign key(cliente) references Clientes(id_cliente),
-    constraint FKlivro foreign key(livro) references Livros(id_livro)
+    constraint FKcliente foreign key(cliente) references Clientes(id_cliente) ON DELETE CASCADE
+ ON UPDATE CASCADE,
+    constraint FKlivro foreign key(livro) references Livros(id_livro) ON DELETE CASCADE
+ ON UPDATE CASCADE
+);
+
+create table  Contas(
+    id int not null primary key auto_increment,
+    nome varchar(140) not null,
+    usuario varchar(140) not null,
+    senha varchar(160) not null
 );
 
 
 
 insert into clientes(nome_cliente) values ("cliente1");
 insert into livros(nome_livro) values ("livro1");
+insert into contas(nome, usuario, senha) values ("admin", 'admin', '$2y$10$emfuiNnWl0NdDDBhQvNT1OqRh.nX10P6tOVbKxY1cf2nEQXBQ3uza');
 
 insert into locacoes(cliente, livro) values (1, 1);
