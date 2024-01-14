@@ -10,7 +10,7 @@ if (!empty($_POST['btnEditar'])) {
         if (!empty($_POST['nomeCliente']) and $_POST['nomeCliente'] != "") {
             $idCliente = $_POST['id'];
             $nomeCliente = $_POST['nomeCliente'];
-            alterarLivro($idCliente, $nomeCliente);
+            alterarCliente($idCliente, $nomeCliente);
         }
     }
 }
@@ -22,7 +22,7 @@ if (!empty($_POST['btnDeletar'])) {
 if (!empty($_POST['btnCadastrar'])) {
     if (!empty($_POST['nomeCliente'])) {
         $nomeCliente = $_POST['nomeCliente'];
-        criarLivro($nomeCliente);
+        criarCliente($nomeCliente);
     }
 }
 
@@ -45,12 +45,12 @@ if (!empty($_POST['btnCadastrar'])) {
         <div class="row ">
             <div class="col" style="height: 33em">
                 <div class="links" style="display: flex; justify-content: center;">
-                    <a href='../View/livroViewCreate.php' target='iframe' class=" btn"
-                        style="width: 80%;  border: 0.2em solid #999; border-radius: 0.2em;"> Cadastrar novo livro</a>
+                    <a href='../View/clienteViewCreate.php' target='iframeCliente' class=" btn"
+                        style="width: 80%;  border: 0.2em solid #999; border-radius: 0.2em;"> Cadastrar novo Cliente</a>
                 </div>
                 <br>
                 <div style="display: flex; justify-content: center;">
-                    <iframe src="" name="iframe" frameborder="1"
+                    <iframe src="" name="iframeCliente" frameborder="1"
                         style="background-color: #CCC; width: 80%; height: 29em"></iframe>
                 </div>
             </div>
@@ -70,7 +70,7 @@ if (!empty($_POST['btnCadastrar'])) {
                         </tr>
                     </thead>
                     <?php
-                    tabelaLivros();
+                    tabelaClientes();
                     ?>
 
                 </table>

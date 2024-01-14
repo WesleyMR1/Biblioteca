@@ -47,12 +47,12 @@ if (!empty($_POST['btnCadastrar'])) {
         <div class="row ">
             <div class="col" style="height: 33em">
                 <div class="links" style="display: flex; justify-content: center;">
-                    <a href='../View/livroViewCreate.php' target='iframe' class=" btn"
+                    <a href='../View/livroViewCreate.php' target='iframeLivro' class=" btn"
                         style="width: 80%;  border: 0.2em solid #999; border-radius: 0.2em;"> Cadastrar novo livro</a>
                 </div>
                 <br>
                 <div style="display: flex; justify-content: center;">
-                    <iframe src="" name="iframe" frameborder="1"
+                    <iframe src="" name="iframeLivro" frameborder="1"
                         style="background-color: #CCC; width: 80%; height: 29em"></iframe>
                 </div>
             </div>

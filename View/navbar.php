@@ -24,10 +24,10 @@ include("../Controller/protect.php");
                     <a href="../View/livroView.php" class="nav-link">Livros</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Clientes</a>
+                    <a href="../View/clienteView.php" class="nav-link">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Locação</a>
+                    <a href="../View/locacaoView.php" class="nav-link">Locação</a>
                 </li>
             </ul>
             <a href="../Controller/logout.php" class="btn btn-danger" style="float: right;">Sair</a>
