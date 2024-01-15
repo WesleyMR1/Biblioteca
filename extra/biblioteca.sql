@@ -1,4 +1,3 @@
--- mysql -h localhost -u root -p
 create database  biblioteca;
 
 use biblioteca
