@@ -105,7 +105,7 @@ final class Locacoes
                 if (!isset($_SESSION)) {
                     session_start();
                 }
-                $_SESSION['msgInfosErradas'] = "Não foi possivel realizar locação, Cliente e/ou Livro inexistente.";
+                $_SESSION['msgInfoErradas'] = "Não foi possivel realizar locação, Cliente e/ou Livro inexistente.";
                 header('../View/locacaoView.php');
             }
             //
