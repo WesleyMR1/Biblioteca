@@ -1,4 +1,3 @@
--- mysql -h localhost -u root -p
 create database  biblioteca;
 
 use biblioteca
@@ -32,8 +31,8 @@ create table  Contas(
 
 
 
-insert into clientes(nome_cliente) values ("cliente1");
-insert into livros(nome_livro) values ("livro1");
+insert into clientes(nome_cliente) values ("Wesley");
+insert into livros(nome_livro) values ("A ordem vermelha");
 insert into contas(nome, usuario, senha) values ("admin", 'admin', '$2y$10$emfuiNnWl0NdDDBhQvNT1OqRh.nX10P6tOVbKxY1cf2nEQXBQ3uza');
 
 insert into locacoes(cliente, livro) values (1, 1);

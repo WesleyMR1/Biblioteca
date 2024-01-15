@@ -67,6 +67,10 @@ if (!empty($_POST['btnLocacao'])) {
                         echo ("<div class=\" btn mx-sm-4 btn-danger\" style=\" width: 80%;z-index:1; \">" . $_SESSION['msgLivroLocado'] . "</div>");
                         unset($_SESSION['msgLivroLocado']);
                     }
+                    if (isset($_SESSION['msgInfosErradas'])) {
+                        echo ("<div class=\" btn mx-sm-4 btn-danger\" style=\" width: 80%;z-index:1; \">" . $_SESSION['msgInfosErradas'] . "</div>");
+                        unset($_SESSION['msgInfosErradas']);
+                    }
                     ?>
                 </div>
 

@@ -75,29 +75,41 @@ final class Locacoes
     {
         try {
             $pdo = conectar();
-            $result = $pdo->query("select * from (locacoes inner join livros on livros.id_livro = locacoes.livro) where livros.nome_livro = '$livro';");
-            $res = $result->fetch(PDO::FETCH_ASSOC);
+            $result = $pdo->query("select * from clientes where nome_cliente='$nome';");
+            $res = $result->fetchAll(PDO::FETCH_ASSOC);
             if (count($res) > 0) {
+                $result = $pdo->query("select * from (locacoes inner join livros on livros.id_livro = locacoes.livro) where livros.nome_livro = '$livro';");
+                $res = $result->fetchAll(PDO::FETCH_ASSOC);
+                if (count($res) > 0) {
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
+                    $_SESSION['msgLivroLocado'] = "Não foi possivel realizar locação, livro ja locado ou informações erradas.";
+                    header('../View/locacaoView.php');
+                } else {
+
+                    $res = $pdo->query("Select id_livro from livros where nome_livro = '$livro';");
+                    $id_livro = $res->fetch(PDO::FETCH_ASSOC);
+                    $res = $pdo->query("Select id_cliente from clientes where nome_cliente = '$nome';");
+                    $id_cliente = $res->fetch(PDO::FETCH_ASSOC);
+
+                    $stmt = $pdo->prepare("insert into locacoes(livro, cliente) values(:livro, :cliente);");
+                    $stmt->bindParam(':livro', $id_livro['id_livro']);
+                    $stmt->bindParam(':cliente', $id_cliente['id_cliente']);
+                    if ($stmt->execute()) {
+                        header("../View/locacoesView.php?");
+                    }
+
+                }
+            } else {
                 if (!isset($_SESSION)) {
                     session_start();
                 }
-                $_SESSION['msgLivroLocado'] = "Não foi possivel realizar locação, livro ja locado!";
+                $_SESSION['msgInfosErradas'] = "Não foi possivel realizar locação, Cliente e/ou Livro inexistente.";
                 header('../View/locacaoView.php');
-            } else {
-
-                $res = $pdo->query("Select id_livro from livros where nome_livro = '$livro';");
-                $id_livro = $res->fetch(PDO::FETCH_ASSOC);
-                $res = $pdo->query("Select id_cliente from clientes where nome_cliente = '$nome';");
-                $id_cliente = $res->fetch(PDO::FETCH_ASSOC);
-
-                $stmt = $pdo->prepare("insert into locacoes(livro, cliente) values(:livro, :cliente);");
-                $stmt->bindParam(':livro', $id_livro['id_livro']);
-                $stmt->bindParam(':cliente', $id_cliente['id_cliente']);
-                if ($stmt->execute()) {
-                    header("../View/locacoesView.php?");
-                }
-
             }
+            //
+
 
 
         } catch (\Throwable $th) {
