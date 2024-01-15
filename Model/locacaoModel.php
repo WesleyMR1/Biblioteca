@@ -76,13 +76,13 @@ final class Locacoes
         try {
             $pdo = conectar();
             $result = $pdo->query("select * from (locacoes inner join livros on livros.id_livro = locacoes.livro) where livros.nome_livro = '$livro';");
-            $res = $result->fetchAll(PDO::FETCH_ASSOC);
+            $res = $result->fetch(PDO::FETCH_ASSOC);
             if (count($res) > 0) {
                 if (!isset($_SESSION)) {
                     session_start();
                 }
                 $_SESSION['msgLivroLocado'] = "Não foi possivel realizar locação, livro ja locado!";
-                header("Location: ../View/locacaoView.php");
+                header('../View/locacaoView.php');
             } else {
 
                 $res = $pdo->query("Select id_livro from livros where nome_livro = '$livro';");

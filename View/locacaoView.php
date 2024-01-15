@@ -8,21 +8,21 @@ include("../Controller/protect.php");
 if (!empty($_POST['btnEditar'])) {
     if (!empty($_POST['id'])) {
         if (!empty($_POST['nomeLivro']) and $_POST['nomeLivro'] != "") {
-            $idLivro = $_POST['id'];
-            $nomeLivro = $_POST['nomeLivro'];
+            $idLivro = filter_input(INPUT_POST, 'id');
+            $nomeLivro = filter_input(INPUT_POST, 'nomeLivro');
             alterarLivro($idLivro, $nomeLivro);
         }
     }
 }
 
 if (!empty($_POST['btnDeletar'])) {
-    $id = $_POST['idLocacao'];
+    $id = filter_input(INPUT_POST, 'idLocacao');
     deletarLocacao($id);
 }
 if (!empty($_POST['btnLocacao'])) {
     if (!empty($_POST['nomeLivro'])) {
-        $nomeLivro = $_POST['nomeLivro'];
-        $nomeCliente = $_POST['nomeCliente'];
+        $nomeLivro = filter_input(INPUT_POST, 'nomeLivro');
+        $nomeCliente = filter_input(INPUT_POST, 'nomeCliente');
         criarLocacao($nomeLivro, $nomeCliente);
     }
 }
@@ -32,6 +32,7 @@ if (!empty($_POST['btnLocacao'])) {
 
 
 ?>
+
 
 <!doctype html>
 <html lang="pt-br">
@@ -50,21 +51,25 @@ if (!empty($_POST['btnLocacao'])) {
                 <div class="links" style="display: flex; justify-content: center;">
                     <a href='../View/locacaoViewCreate.php' target='iframeLocacao' class=" btn"
                         style="width: 80%;  border: 0.2em solid #999; border-radius: 0.2em;"> Realizar LOCAÇÃO</a>
+
                 </div>
                 <br>
                 <div style="display: flex; justify-content: center;">
                     <iframe src="" name="iframeLocacao" frameborder="1"
-                        style="background-color: #CCC; width: 80%; height: 29em"></iframe>
+                        style="background-color: #CCC; width: 80%; height: 27em"></iframe>
                 </div>
-                <div>
+                <div style="display: flex;justify-content: center;">
                     <?PHP
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
                     if (isset($_SESSION['msgLivroLocado'])) {
-                        echo "<div class=\" btn btn-danger\" style=\"float: left; z-index=1\">" . $_SESSION['msgLivroLocado'] . "</div>";
+                        echo ("<div class=\" btn mx-sm-4 btn-danger\" style=\" width: 80%;z-index:1; \">" . $_SESSION['msgLivroLocado'] . "</div>");
                         unset($_SESSION['msgLivroLocado']);
                     }
                     ?>
-
                 </div>
+
             </div>
             <!--  -->
             <div class="col"

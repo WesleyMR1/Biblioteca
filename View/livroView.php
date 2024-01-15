@@ -8,20 +8,20 @@ include("../Controller/protect.php");
 if (!empty($_POST['btnEditar'])) {
     if (!empty($_POST['id'])) {
         if (!empty($_POST['nomeLivro']) and $_POST['nomeLivro'] != "") {
-            $idLivro = $_POST['id'];
-            $nomeLivro = $_POST['nomeLivro'];
+            $idLivro = filter_input(INPUT_POST, 'id');
+            $nomeLivro = filter_input(INPUT_POST, 'nomeLivro');
             alterarLivro($idLivro, $nomeLivro);
         }
     }
 }
 
 if (!empty($_POST['btnDeletar'])) {
-    $id = $_POST['idLivro'];
+    $id = filter_input(INPUT_POST, 'idLivro');
     deletarLivro($id);
 }
 if (!empty($_POST['btnCadastrar'])) {
     if (!empty($_POST['nomeLivro'])) {
-        $nomeLivro = $_POST['nomeLivro'];
+        $nomeLivro = filter_input(INPUT_POST, 'nomeLivro');
         criarLivro($nomeLivro);
     }
 }

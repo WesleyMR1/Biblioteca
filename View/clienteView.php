@@ -8,20 +8,20 @@ include("../Controller/protect.php");
 if (!empty($_POST['btnEditar'])) {
     if (!empty($_POST['id'])) {
         if (!empty($_POST['nomeCliente']) and $_POST['nomeCliente'] != "") {
-            $idCliente = $_POST['id'];
-            $nomeCliente = $_POST['nomeCliente'];
+            $idCliente = filter_input(INPUT_POST, 'id');
+            $nomeCliente = filter_input(INPUT_POST, 'nomeCliente');
             alterarCliente($idCliente, $nomeCliente);
         }
     }
 }
 
 if (!empty($_POST['btnDeletar'])) {
-    $id = $_POST['idCliente'];
+    $id = filter_input(INPUT_POST, 'idCliente');
     deletarCliente($id);
 }
 if (!empty($_POST['btnCadastrar'])) {
     if (!empty($_POST['nomeCliente'])) {
-        $nomeCliente = $_POST['nomeCliente'];
+        $nomeCliente = filter_input(INPUT_POST, 'nomeCliente');
         criarCliente($nomeCliente);
     }
 }
