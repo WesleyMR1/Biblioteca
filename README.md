@@ -1,7 +1,7 @@
 Instalação do projeto: 
 
-1) Aplicação do codigo SQL no banco de dados MYSQL.
-//Biblioteca>extra>biblioteca.sql .
+1) Aplicação do codigo SQL no banco de dados MYSQL.<br/>
+//Biblioteca>extra>biblioteca.sql .<br>
 //Copiar e colar o código no banco de dados.
 
 2) Conferência de atributos (host, user e senha) da DSN para conexão com banco de dados em Biblioteca>Controller>DAO>conexao.php .
